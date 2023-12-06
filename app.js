@@ -53,10 +53,8 @@ app.use(morgan("combined"));
 app.use(helmet());
 app.set('view engine', 'ejs');
 
-
 app.use("/user", userRouter);
 app.set("view options", { layout: false });
-
 
 app.get('/', function (req, res) {
     res.render('multer');
