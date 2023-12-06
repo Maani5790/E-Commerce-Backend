@@ -6,6 +6,7 @@ import morgan from "morgan";
 import helmet from "helmet";
 import connection from "./database/db.js";
 import cookieParser from 'cookie-parser';
+import userRouter from "./router/userRoutes.js";
 
 const server = express();
 
@@ -25,6 +26,13 @@ server.use((req, res, next) => {
 server.use(morgan("dev"));
 server.use(morgan("combined"));
 server.use(helmet());
+
+server.use("/user", userRouter);
+
+server.use("/", (req,res,next)=>{
+    res.send("hello world");
+    next()
+})
 
 const port = 8000;
 const username = process.env.MONGODB_USERNAME;
