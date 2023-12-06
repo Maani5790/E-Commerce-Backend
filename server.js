@@ -7,6 +7,10 @@ import helmet from "helmet";
 import connection from "./database/db.js";
 import cookieParser from 'cookie-parser';
 import userRouter from "./router/userRoutes.js";
+import { Server } from "socket.io";
+import multer from "multer";
+import chalk from 'chalk';
+
 
 const server = express();
 
@@ -31,15 +35,16 @@ server.use("/user", userRouter);
 
 server.use("/", (req,res,next)=>{
     res.send("hello world");
+    console.log(chalk.blue('Hello world!'));
     next()
 })
 
-const port = 8000;
+const port = process.env.PORT || 8000;
 const username = process.env.MONGODB_USERNAME;
 const password = process.env.MONGODB_PASSWORD;
 
 connection(username, password)
 
 server.listen(port, () =>
-    console.log(`Server is running successfully on PORT ${port}`)
+    console.log(`Server is running successfully on Local Host PORT ${port}`)
 );
