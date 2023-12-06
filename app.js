@@ -33,7 +33,6 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage });
 
-
 app.post("/upload", upload.fields([{ name: "profileImage" }, { name: "coverImage" }]), (req, res) => {
     console.log(req.body);
     console.log(req.file);
