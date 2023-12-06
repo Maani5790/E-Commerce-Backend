@@ -9,7 +9,7 @@ import cookieParser from 'cookie-parser';
 import userRouter from "./router/userRoutes.js";
 import chalk from 'chalk';
 import multer from "multer";
-import {createServer} from "node:http";
+import { createServer } from "node:http";
 import { Server } from "socket.io";
 
 const app = express();
@@ -19,9 +19,9 @@ const io = new Server(server);
 io.on('connection', (socket) => {
     console.log('a user connected');
     socket.on('disconnect', () => {
-      console.log('user disconnected');
+        console.log('user disconnected');
     });
-  });
+});
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
