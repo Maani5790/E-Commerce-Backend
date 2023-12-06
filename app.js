@@ -9,7 +9,6 @@ import cookieParser from 'cookie-parser';
 import userRouter from "./router/userRoutes.js";
 import chalk from 'chalk';
 import multer from "multer";
-// import { Server } from 'socket.io';
 
 const app = express();
 // const upload = multer({ dest: 'uploads/' });
