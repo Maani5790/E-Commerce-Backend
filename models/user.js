@@ -28,7 +28,7 @@ const userSchema = mongoose.Schema({
     },
     phone: {
         type: String,
-        required: [true, "city is required"]
+        required: [true, "phone is required"]
     },
     profilePic: {
         type: String,
@@ -36,5 +36,5 @@ const userSchema = mongoose.Schema({
 
 }, { Timestamp: true });
 
-export const userMdoel = mongoose.model("Users", userSchema);
-export default userMdoel;
+const userModel = mongoose.model("Users", userSchema);
+export default userModel;
