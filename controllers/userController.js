@@ -40,7 +40,7 @@ export const registerController = async (req, res) => {
     };
 };
 
-export const loginController  = (req,res,next) =>{
+export const loginController = (req, res, next) => {
     res.send("login")
 
 }
