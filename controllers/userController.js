@@ -24,12 +24,12 @@ export const registerController = async (req, res) => {
             city,
             country,
             phone
-        })
+        });
         res.status(201).send({
             success: true,
             message: "user created successfully",
             user,
-        })
+        });
     } catch (error) {
         console.log(error);
         res.status(500).send({
@@ -37,7 +37,7 @@ export const registerController = async (req, res) => {
             message: "Error In Register User",
             error,
         });
-    }
+    };
 };
 
 

@@ -9,7 +9,7 @@ const connection = async ( username,password ) =>{
 
     } catch(error){
         console.log("Error While Connected MongoDB", error)
-    }
-}
+    };
+};
 
-export default  connection
+export default  connection;

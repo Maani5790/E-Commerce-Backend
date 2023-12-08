@@ -7,4 +7,4 @@ userRouter.get("/register", (req, res, next) => {
     res.send("user register");
 });
 
-export default userRouter
+export default userRouter;
