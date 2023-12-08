@@ -40,5 +40,10 @@ export const registerController = async (req, res) => {
     };
 };
 
+export const loginController  = (req,res,next) =>{
+    res.send("login")
 
-export default { registerController }
+}
+
+
+export default { registerController, loginController }
