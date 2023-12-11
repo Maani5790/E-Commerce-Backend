@@ -15,6 +15,7 @@ import { Server } from "socket.io";
 const app = express();
 const server = createServer(app);
 const io = new Server(server);
+app.use(cookieParser());
 
 io.on('connection', (socket) => {
     console.log('a user connected');
@@ -65,8 +66,12 @@ const port = process.env.PORT || 8000;
 const username = process.env.MONGODB_USERNAME;
 const password = process.env.MONGODB_PASSWORD;
 
-connection(username, password)
+connection(username, password);
 
-app.listen(port, () =>
-    console.log(chalk.yellow(`Application Is Running Successfully On Local Host Port ${port}`))
-);
+app.listen(port, () => {
+    console.log(
+
+        chalk.yellow(`Server Running On PORT ${process.env.PORT} on ${process.env.NODE_ENV} Mode`
+        ));
+});
+

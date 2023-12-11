@@ -49,7 +49,7 @@ export const loginController = async (req, res) => {
                 success: false,
                 message: "Please Add Email OR Password",
             });
-        }
+        };
 
         const user = await userModel.findOne({ email });
 
@@ -58,7 +58,7 @@ export const loginController = async (req, res) => {
                 success: false,
                 message: "USer Not Found",
             });
-        }
+        };
 
         const isMatch = await user.comparePassword(password);
 
@@ -67,12 +67,20 @@ export const loginController = async (req, res) => {
                 success: false,
                 message: "invalid credentials",
             });
-        }
+        };
+        const token = user.generateToken();
         res
             .status(200)
+            .cookie("token", token, {
+                expires: new Date(Date.now() + 15 * 24 * 60 * 60 * 1000),
+                secure: process.env.NODE_ENV === "development" ? true : false,
+                httpOnly: process.env.NODE_ENV === "development" ? true : false,
+                sameSite: process.env.NODE_ENV === "development" ? true : false,
+            })
             .send({
                 success: true,
                 message: "Login Successfully",
+                token,
                 user,
             });
     } catch (error) {
@@ -82,7 +90,7 @@ export const loginController = async (req, res) => {
             message: "Error In Login Api",
             error,
         });
-    }
+    };
 };
 
 
