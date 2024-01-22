@@ -93,5 +93,25 @@ export const loginController = async (req, res) => {
     };
 };
 
+// Get User Profile 
 
-export default { registerController, loginController }
+export const getUserProfileController = async (req, res) => {
+    try {
+        const user = await userModel.findById(req.user._id)
+        res.status(200).send({
+            success: true,
+            message: "User Profile Fetched Successfully",
+            user,
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(500).send({
+            success: false,
+            message: "Error In Profile API",
+            error,
+        });
+    };
+};
+
+
+export default { registerController, loginController, getUserProfileController }
