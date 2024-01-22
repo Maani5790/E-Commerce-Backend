@@ -50,5 +50,9 @@ userSchema.methods.generateToken = function () {
     return Jwt.sign({ _id: this._id }, process.env.JWT_SECRET, { expiresIn: "7d", })
 }
 
+// userSchema.methods.generateToken = function () {
+//     return Jwt.sign({_id:this._id}, process.env.JWT.SECRET, {expiresIn:"7d",})
+// }
+
 const userModel = mongoose.model("Users", userSchema);
 export default userModel;
