@@ -113,5 +113,4 @@ export const getUserProfileController = async (req, res) => {
     };
 };
 
-
 export default { registerController, loginController, getUserProfileController }

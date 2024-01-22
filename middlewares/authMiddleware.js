@@ -9,7 +9,7 @@ export const isAuth = async (req, res) => {
         });
     };
     const decodeData = JWT.verify(token, process.env.JWT_SECRET)
-    req.id = await userModel.findById(decodeData._id);
+    req.user = await userModel.findById(decodeData._id);
     next();
 };
 
