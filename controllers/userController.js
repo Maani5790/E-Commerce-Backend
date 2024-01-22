@@ -50,7 +50,6 @@ export const loginController = async (req, res) => {
                 message: "Please Add Email OR Password",
             });
         };
-
         const user = await userModel.findOne({ email });
 
         if (!user) {
@@ -113,4 +112,30 @@ export const getUserProfileController = async (req, res) => {
     };
 };
 
-export default { registerController, loginController, getUserProfileController }
+// Logout 
+
+export const logoutController = async (req, res) => {
+    try {
+        res
+            .status(200)
+            .cookies("token", "", {
+                expires: new Date(Date.now()),
+                secure: process.env.NODE_ENV === "development" ? true : false,
+                sameSite: process.env.NODE_ENV === "development" ? true : false,
+                httpOnly: process.env.NODE_ENV === "development" ? true : false,
+            })
+            .send({
+                success: true,
+                message: "Logout SUccessfully",
+            });
+    } catch (error) {
+        console.log(error);
+        res.status(500).send({
+            success: false,
+            message: "Error In LOgout API",
+            error,
+        });
+    }
+};
+
+export default { registerController, loginController, getUserProfileController, logoutController }

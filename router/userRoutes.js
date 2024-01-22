@@ -1,5 +1,5 @@
 import express from "express";
-import { getUserProfileController, loginController, registerController } from "../controllers/userController.js";
+import { getUserProfileController, loginController, logoutController, registerController } from "../controllers/userController.js";
 import  isAuth  from "../middlewares/authMiddleware.js";
 const userRouter = express.Router();
 
@@ -12,6 +12,7 @@ userRouter.get("/register", (req, res, next) => {
     res.send("user register");
 });
 
-userRouter.get("/profile", isAuth, getUserProfileController)
+userRouter.get("/profile", isAuth, getUserProfileController);
+userRouter.get("/logout", isAuth, logoutController);
 
 export default userRouter;
